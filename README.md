@@ -1,5 +1,5 @@
 # Compose Particles
-Compose Particles is a set of foundational and most used components used for building Compose Multiplatform apps.
+Compose Particles is a set of foundational and most used components for building Compose Multiplatform apps.
 
 ### Use it
 ```kotlin
