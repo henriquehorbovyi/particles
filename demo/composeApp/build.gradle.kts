@@ -102,7 +102,7 @@ kotlin {
 }
 
 android {
-    namespace = "dev.henriquehorbovyi.demo"
+    namespace = "io.henriquehorbovyi.demo"
     compileSdk = 35
 
     defaultConfig {

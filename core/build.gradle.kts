@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
-
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.compose.reload.ComposeHotRun
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -12,7 +12,9 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.hotReload)
+    id("com.vanniktech.maven.publish") version "0.30.0"
 }
+version = "0.0.1"
 
 java {
     toolchain {
@@ -20,7 +22,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
 kotlin {
     androidTarget {
         publishLibraryVariants("release", "debug")
@@ -74,7 +75,7 @@ kotlin {
 }
 
 android {
-    namespace = "dev.henriquehorbovyi.particles"
+    namespace = "io.github.henriquehorbovyi.particles"
     compileSdk = 35
 
     defaultConfig {
@@ -95,4 +96,38 @@ composeCompiler {
 }
 tasks.withType<ComposeHotRun>().configureEach {
     mainClass.set("MainKt")
+}
+
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+
+    coordinates(group.toString(), "particles", version.toString())
+    pom {
+        name = "Particles"
+        description = "Common building blocks for crafting Compose UI applications."
+        inceptionYear = "2025"
+        url = "https://github.com/henriquehorbovyi/particles"
+        licenses {
+            license {
+                name = "MIT License"
+                url = "http://www.opensource.org/licenses/mit-license.php"
+                distribution = "http://www.opensource.org/licenses/mit-license.php"
+            }
+        }
+        developers {
+            developer {
+                id = "particles"
+                name = "Henrique Horbovyi"
+                url = "https://github.com/henriquehorbovyi/"
+            }
+        }
+        scm {
+            url = "https://github.com/henriquehorbovyi/particles/"
+            connection = "scm:git:git://github.com/henriquehorbovyi/particles.git"
+            developerConnection = "scm:git:ssh://git@github.com/henriquehorbovyi/particles.git"
+        }
+    }
 }
