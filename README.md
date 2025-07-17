@@ -1,20 +1,19 @@
-# Compose Particles
+<h1>Compose Particles</h1>
+
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.henriquehorbovyi/particles.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.henriquehorbovyi%22%20AND%20a:%22particles%22)
+
 Compose Particles is a set of foundational and most used components for building Compose Multiplatform apps.
 
 ### Use it
 ```kotlin
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    // TODO:implementation("dev.henriquehorbovyi.particles:1.0.0")
-    implementation("TBD")
-}
+implementation("io.github.henriquehorbovyi:particles:0.0.1")
 ```
 
-### Documentation
+### Components
 - WIP
 
 ### Contributing
 - WIP
+
+### License 
+MIT License - see LICENSE file for details.
