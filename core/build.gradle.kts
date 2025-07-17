@@ -15,6 +15,7 @@ plugins {
     id("com.vanniktech.maven.publish") version "0.30.0"
 }
 version = "0.0.1"
+group = "io.github.henriquehorbovyi"
 
 java {
     toolchain {

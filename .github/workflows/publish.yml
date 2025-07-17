@@ -50,7 +50,7 @@ jobs:
           git tag -a $TAG -m "Release v$TAG"
           git push origin $TAG
         env:
-          TAG: ${{ github.event.inputs.versionName }}-SNAPSHOT
+          TAG: ${{ github.event.inputs.versionName }}
 
       - name: Create Release on GitHub
         id: create_release
@@ -58,7 +58,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.inputs.versionName }}-SNAPSHOT
-          release_name: ${{ github.event.inputs.versionName }}-SNAPSHOT
+          tag_name: ${{ github.event.inputs.versionName }}
+          release_name: ${{ github.event.inputs.versionName }}
           draft: true
           prerelease: false
