@@ -1,7 +1,8 @@
-<h1>Compose Particles</h1>
+<h1 align="center">Compose Particles</h1>
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.henriquehorbovyi/particles.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.henriquehorbovyi%22%20AND%20a:%22particles%22) [![CircleCI](https://circleci.com/gh/henriquehorbovyi/particles.svg?style=shield)](https://circleci.com/gh/henriquehorbovyi/particles)
-
+<p align="center">
+<a href="https://github.com/henriquehorbovyi/particles/actions/workflows/workflows.yml"><img src="https://github.com/henriquehorbovyi/particles/actions/workflows/workflows.yml/badge.svg" alt="Build status"></a>
+<a href="https://search.maven.org/artifact/io.github.henriquehorbovyi/particles"><img src="https://img.shields.io/maven-central/v/io.github.henriquehorbovyi/particles.svg?label=Maven%20Central" alt="Maven Central"></a>
 
 Compose Particles is a set of foundational and most used components for building Compose Multiplatform apps.
 
