@@ -40,7 +40,7 @@ fun TabContainer(
     onTabChanged: (index: Int) -> Unit = {},
     colors: TabContainerColors = TabDefaultsDefaults.colors(),
     tabHeight: Dp = 42.dp,
-    tabSpacing: Dp = 4.dp
+    tabSpacing: Dp = 4.dp,
 ) {
     var internalSelectedIndex by remember { mutableStateOf(selectedIndex) }
 
@@ -67,29 +67,31 @@ fun TabContainer(
     val indicatorWidthDp by animateDpAsState(targetValue = with(density) { indicatorWidthPx.toDp() })
 
     Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(colors.containerBackground)
-            .padding(4.dp)
+        modifier =
+            modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(colors.containerBackground)
+                .padding(4.dp),
     ) {
         TabIndicator(
             indicatorOffset = indicatorOffsetDp,
             tabWidth = indicatorWidthDp,
             tabHeight = tabHeight,
-            color = colors.selectedTabBackground
+            color = colors.selectedTabBackground,
         )
 
         Row(
             modifier = Modifier.align(Alignment.Center),
             horizontalArrangement = Arrangement.spacedBy(tabSpacing),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             tabs.forEachIndexed { index, value ->
-                val onTabSizeChanged = rememberUpdatedState { size: IntSize ->
-                    if (tabWidthsPx[index] != size.width) {
-                        tabWidthsPx[index] = size.width
+                val onTabSizeChanged =
+                    rememberUpdatedState { size: IntSize ->
+                        if (tabWidthsPx[index] != size.width) {
+                            tabWidthsPx[index] = size.width
+                        }
                     }
-                }
 
                 Tab(
                     text = value,
@@ -103,9 +105,10 @@ fun TabContainer(
                         internalSelectedIndex = it
                         onTabChanged(internalSelectedIndex)
                     },
-                    modifier = Modifier
-                        .defaultMinSize(minHeight = tabHeight)
-                        .onSizeChanged { onTabSizeChanged.value(it) }
+                    modifier =
+                        Modifier
+                            .defaultMinSize(minHeight = tabHeight)
+                            .onSizeChanged { onTabSizeChanged.value(it) },
                 )
             }
         }
@@ -125,15 +128,16 @@ private fun Tab(
     onSelect: (index: Int) -> Unit = {},
 ) {
     val textColor by animateColorAsState(
-        targetValue = if (isSelected) selectedTextColor else unselectedTextColor
+        targetValue = if (isSelected) selectedTextColor else unselectedTextColor,
     )
     Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(if (isSelected) selectedBackground else unselectedBackground)
-            .clickable { onSelect(index) }
-            .padding(horizontal = 8.dp),
-        contentAlignment = Alignment.Center
+        modifier =
+            modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(if (isSelected) selectedBackground else unselectedBackground)
+                .clickable { onSelect(index) }
+                .padding(horizontal = 8.dp),
+        contentAlignment = Alignment.Center,
     ) {
         Text(text = text, color = textColor)
     }
@@ -145,7 +149,7 @@ private fun ThreeStateSwitchPreview() {
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         TabContainer(tabs = listOf("Code", "Issues", "Docs"))
     }

@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.number
+package io.github.henriquehorbovyi.particles.number
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -26,8 +26,8 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.henriquehorbovyi.particles.buttons.simple.SimpleButton
-import io.henriquehorbovyi.particles.buttons.simple.SimpleButtonDefaults
+import io.github.henriquehorbovyi.particles.buttons.simple.SimpleButton
+import io.github.henriquehorbovyi.particles.buttons.simple.SimpleButtonDefaults
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /**
@@ -77,13 +77,13 @@ fun NumberIncrementer(
     increaseInteractionSource.onIsPressedStateChanged(
         initialDelay = initialDelay,
         repeatDelay = repeatDelay,
-        onPressBegin = { onValueChange(++internalValue) }
+        onPressBegin = { onValueChange(++internalValue) },
     )
 
     decreaseInteractionSource.onIsPressedStateChanged(
         initialDelay = initialDelay,
         repeatDelay = repeatDelay,
-        onPressBegin = { onValueChange(--internalValue) }
+        onPressBegin = { onValueChange(--internalValue) },
     )
 
     val mergedStyle =
@@ -94,19 +94,21 @@ fun NumberIncrementer(
         LocalTextStyle provides mergedStyle,
     ) {
         Row(
-            modifier = modifier
-                .clip(shape)
-                .background(colors.background)
-                .border(border, shape)
-                .padding(contentPadding),
+            modifier =
+                modifier
+                    .clip(shape)
+                    .background(colors.background)
+                    .border(border, shape)
+                    .padding(contentPadding),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
             decreaseButton?.invoke(this) ?: SimpleButton(
-                colors = SimpleButtonDefaults.colors(
-                    background = colors.buttonBackground,
-                    contentColor = colors.buttonContent,
-                ),
+                colors =
+                    SimpleButtonDefaults.colors(
+                        background = colors.buttonBackground,
+                        contentColor = colors.buttonContent,
+                    ),
                 content = { Text("-", fontSize = 18.sp) },
                 contentPadding = PaddingValues(0.dp),
                 interactionSource = decreaseInteractionSource,
@@ -116,13 +118,14 @@ fun NumberIncrementer(
                 text = value.toString(),
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 8.dp)
+                modifier = Modifier.padding(horizontal = 8.dp),
             )
             increaseButton?.invoke(this) ?: SimpleButton(
-                colors = SimpleButtonDefaults.colors(
-                    background = colors.buttonBackground,
-                    contentColor = colors.buttonContent,
-                ),
+                colors =
+                    SimpleButtonDefaults.colors(
+                        background = colors.buttonBackground,
+                        contentColor = colors.buttonContent,
+                    ),
                 content = { Text("+", fontSize = 18.sp) },
                 contentPadding = PaddingValues(0.dp),
                 interactionSource = increaseInteractionSource,
@@ -138,7 +141,6 @@ private fun NumberIncrementerPreview() {
 
     NumberIncrementer(
         value = value,
-        onValueChange = { value = it }
+        onValueChange = { value = it },
     )
-
 }

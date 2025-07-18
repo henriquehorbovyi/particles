@@ -11,12 +11,12 @@ import io.henriquehorbovyi.demo.data.ParticleComponent
 @Composable
 fun DemoDetailScreen(
     particle: ParticleComponent,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         particle.composable(this)
     }

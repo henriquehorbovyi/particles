@@ -23,7 +23,7 @@ fun DemoApp() {
             NavHost(
                 navController = navController,
                 startDestination = "home",
-                modifier = Modifier.padding(paddingValues)
+                modifier = Modifier.padding(paddingValues),
             ) {
                 composable("home") {
                     HomeScreen(onItemClick = { index -> navController.navigate("details/$index") })

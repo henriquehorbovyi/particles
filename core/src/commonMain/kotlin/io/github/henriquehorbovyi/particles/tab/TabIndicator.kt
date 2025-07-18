@@ -19,14 +19,15 @@ fun TabIndicator(
     indicatorOffset: Dp,
     tabWidth: Dp,
     tabHeight: Dp,
-    color: Color
+    color: Color,
 ) {
     Box(
-        modifier = modifier
-            .offset(x = indicatorOffset)
-            .defaultMinSize(minWidth = tabWidth, minHeight = tabHeight)
-            .clip(RoundedCornerShape(8.dp))
-            .background(color)
-            .padding(16.dp)
+        modifier =
+            modifier
+                .offset(x = indicatorOffset)
+                .defaultMinSize(minWidth = tabWidth, minHeight = tabHeight)
+                .clip(RoundedCornerShape(8.dp))
+                .background(color)
+                .padding(16.dp),
     )
 }

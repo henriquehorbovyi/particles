@@ -8,6 +8,7 @@ androidx-uiTest = "1.8.1"
 hotReload = "1.0.0-alpha09"
 android-compileSdk = "35"
 android-minSdk = "21"
+ktlintPlugin = "13.0.0"
 
 [libraries]
 
@@ -23,3 +24,4 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 hotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "hotReload" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }

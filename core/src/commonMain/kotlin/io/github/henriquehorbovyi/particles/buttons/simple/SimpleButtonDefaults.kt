@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.buttons.simple
+package io.github.henriquehorbovyi.particles.buttons.simple
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,16 +12,13 @@ class SimpleButtonColors(
     val background: Color,
     val disabledBackground: Color,
     val contentColor: Color,
-    val disabledContentColor: Color
+    val disabledContentColor: Color,
 ) {
     @Stable
-    internal fun containerColor(enabled: Boolean): Color =
-        if (enabled) background else disabledBackground
+    internal fun containerColor(enabled: Boolean): Color = if (enabled) background else disabledBackground
 
     @Stable
-    internal fun contentColor(enabled: Boolean): Color =
-        if (enabled) contentColor else disabledContentColor
-
+    internal fun contentColor(enabled: Boolean): Color = if (enabled) contentColor else disabledContentColor
 }
 
 object SimpleButtonDefaults {
@@ -42,7 +39,7 @@ object SimpleButtonDefaults {
             start = ButtonHorizontalPadding,
             top = ButtonVerticalPadding,
             end = ButtonHorizontalPadding,
-            bottom = ButtonVerticalPadding
+            bottom = ButtonVerticalPadding,
         )
 
     val shape: RoundedCornerShape =
@@ -52,11 +49,12 @@ object SimpleButtonDefaults {
         background: Color = this.background,
         disabledBackground: Color = this.disabledBackground,
         contentColor: Color = this.contentColor,
-        disabledContentColor: Color = this.disabledContentColor
-    ): SimpleButtonColors = SimpleButtonColors(
-        background = background,
-        disabledBackground = disabledBackground,
-        contentColor = contentColor,
-        disabledContentColor = disabledContentColor
-    )
+        disabledContentColor: Color = this.disabledContentColor,
+    ): SimpleButtonColors =
+        SimpleButtonColors(
+            background = background,
+            disabledBackground = disabledBackground,
+            contentColor = contentColor,
+            disabledContentColor = disabledContentColor,
+        )
 }

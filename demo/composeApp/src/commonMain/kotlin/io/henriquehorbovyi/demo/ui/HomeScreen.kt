@@ -2,7 +2,12 @@ package io.henriquehorbovyi.demo.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -23,14 +28,14 @@ fun HomeScreen(onItemClick: (particleIndex: Int) -> Unit) {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
         stickyHeader {
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.background)
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(vertical = 16.dp),
+                contentAlignment = Alignment.Center,
             ) {
                 Text(
                     text = "Demo Particles",
@@ -40,11 +45,12 @@ fun HomeScreen(onItemClick: (particleIndex: Int) -> Unit) {
         }
         items(particles) { particle ->
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onItemClick(particles.indexOf(particle)) }
-                    .padding(vertical = 8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .clickable { onItemClick(particles.indexOf(particle)) }
+                        .padding(vertical = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 DemoItem(particle)
             }
@@ -55,20 +61,21 @@ fun HomeScreen(onItemClick: (particleIndex: Int) -> Unit) {
 @Composable
 fun DemoItem(
     particle: ParticleComponent,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(12.dp)
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(12.dp),
     ) {
         Text(
             text = particle.name,
-            style = TextStyle(
-                fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            style =
+                TextStyle(
+                    fontSize = 16.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                ),
         )
     }
 }
-

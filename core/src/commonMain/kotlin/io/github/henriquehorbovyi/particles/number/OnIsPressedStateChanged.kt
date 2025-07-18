@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.number
+package io.github.henriquehorbovyi.particles.number
 
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState

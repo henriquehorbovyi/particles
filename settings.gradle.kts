@@ -3,7 +3,7 @@ rootProject.name = "particles"
 pluginManagement {
     repositories {
         google {
-            content { 
+            content {
               	includeGroupByRegex("com\\.android.*")
               	includeGroupByRegex("com\\.google.*")
               	includeGroupByRegex("androidx.*")
@@ -12,13 +12,14 @@ pluginManagement {
         }
         gradlePluginPortal()
         mavenCentral()
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
 }
 
 dependencyResolutionManagement {
     repositories {
         google {
-            content { 
+            content {
               	includeGroupByRegex("com\\.android.*")
               	includeGroupByRegex("com\\.google.*")
               	includeGroupByRegex("androidx.*")
@@ -26,6 +27,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
 }
 plugins {

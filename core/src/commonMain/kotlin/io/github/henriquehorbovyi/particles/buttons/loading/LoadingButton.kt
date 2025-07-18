@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.buttons.loading
+package io.github.henriquehorbovyi.particles.buttons.loading
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import io.henriquehorbovyi.particles.buttons.simple.SimpleButton
-import io.henriquehorbovyi.particles.buttons.simple.SimpleButtonDefaults
+import io.github.henriquehorbovyi.particles.buttons.simple.SimpleButton
+import io.github.henriquehorbovyi.particles.buttons.simple.SimpleButtonDefaults
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /**
@@ -71,7 +71,7 @@ fun LoadingButton(
                     }
                 }
             }
-        }
+        },
     )
 }
 
@@ -114,7 +114,7 @@ fun LoadingButton(
                 if (progressIndicatorSide == ProgressIndicatorSide.Start) {
                     if (isLoading) {
                         DefaultCircularProgressIndicator(
-                            progressIndicatorConfig = progressIndicatorConfig
+                            progressIndicatorConfig = progressIndicatorConfig,
                         )
                     }
                     if (isContentVisible) {
@@ -126,26 +126,26 @@ fun LoadingButton(
                     }
                     if (isLoading) {
                         DefaultCircularProgressIndicator(
-                            progressIndicatorConfig = progressIndicatorConfig
+                            progressIndicatorConfig = progressIndicatorConfig,
                         )
                     }
                 }
             }
-        }
+        },
     )
 }
 
 @Composable
 internal fun DefaultCircularProgressIndicator(
     modifier: Modifier = Modifier,
-    progressIndicatorConfig: ProgressIndicatorConfig = ProgressIndicatorConfig()
+    progressIndicatorConfig: ProgressIndicatorConfig = ProgressIndicatorConfig(),
 ) {
     CircularProgressIndicator(
         modifier = modifier.size(16.dp),
         color = progressIndicatorConfig.color,
         trackColor = progressIndicatorConfig.trackColor,
         strokeWidth = progressIndicatorConfig.strokeWidth,
-        strokeCap = progressIndicatorConfig.strokeCap
+        strokeCap = progressIndicatorConfig.strokeCap,
     )
 }
 
@@ -157,9 +157,9 @@ data class ProgressIndicatorConfig(
 )
 
 enum class ProgressIndicatorSide {
-    Start, End
+    Start,
+    End,
 }
-
 
 @Preview()
 @Composable
@@ -167,6 +167,6 @@ private fun LoadingButtonPreview() {
     LoadingButton(
         content = { Text("Submit") },
         isLoading = true,
-        onClick = {}
+        onClick = {},
     )
 }

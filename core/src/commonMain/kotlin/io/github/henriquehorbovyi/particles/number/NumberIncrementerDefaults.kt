@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.number
+package io.github.henriquehorbovyi.particles.number
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,14 +20,13 @@ object NumberIncrementerDefaults {
         content: Color = Color.White,
         buttonBackground: Color = Color.Black,
         buttonContent: Color = Color.White,
-    ): NumberIncrementerColors {
-        return NumberIncrementerColors(
+    ): NumberIncrementerColors =
+        NumberIncrementerColors(
             background = background,
             content = content,
             buttonBackground = buttonBackground,
             buttonContent = buttonContent,
         )
-    }
 }
 
 class NumberIncrementerColors(

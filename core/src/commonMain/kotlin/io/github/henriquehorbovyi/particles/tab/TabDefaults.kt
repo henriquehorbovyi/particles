@@ -7,7 +7,7 @@ data class TabContainerColors(
     val selectedTabBackground: Color,
     val unselectedTabBackground: Color,
     val selectedTabColor: Color,
-    val unselectedTabColor: Color
+    val unselectedTabColor: Color,
 )
 
 object TabDefaultsDefaults {
@@ -17,11 +17,12 @@ object TabDefaultsDefaults {
     private val selectedTextColor: Color = Color.White
     private val unselectedTextColor: Color = Color(0xffa0a0a0)
 
-    fun colors(): TabContainerColors = TabContainerColors(
-        containerBackground = background,
-        selectedTabBackground = selectedBackground,
-        unselectedTabBackground = unselectedBackground,
-        selectedTabColor = selectedTextColor,
-        unselectedTabColor = unselectedTextColor
-    )
+    fun colors(): TabContainerColors =
+        TabContainerColors(
+            containerBackground = background,
+            selectedTabBackground = selectedBackground,
+            unselectedTabBackground = unselectedBackground,
+            selectedTabColor = selectedTextColor,
+            unselectedTabColor = unselectedTextColor,
+        )
 }

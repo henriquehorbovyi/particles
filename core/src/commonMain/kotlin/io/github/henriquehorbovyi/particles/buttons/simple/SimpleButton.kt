@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.buttons.simple
+package io.github.henriquehorbovyi.particles.buttons.simple
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -68,39 +68,38 @@ fun SimpleButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     contentPadding: PaddingValues = SimpleButtonDefaults.ContentPadding,
     border: BorderStroke? = null,
-    elevation: Dp = SimpleButtonDefaults.elevation
+    elevation: Dp = SimpleButtonDefaults.elevation,
 ) {
     val containerColor = colors.containerColor(enabled)
     val contentColor = colors.contentColor(enabled)
     val tonalElevationEnabled = LocalTonalElevationEnabled.current
 
-
     Box(
-        modifier = modifier
-            .semantics { role = Role.Button }
-            .defaultMinSize(
-                minWidth = SimpleButtonDefaults.MinWidth,
-                minHeight = SimpleButtonDefaults.MinHeight
-            )
-            .minimumInteractiveComponentSize()
-            .surface(
-                shape = shape,
-                backgroundColor = containerColor,
-                border = border,
-                shadowElevation = with(LocalDensity.current) { elevation.toPx() }
-            )
-            .clickable(
-                enabled = enabled,
-                onClick = onClick,
-                role = Role.Button,
-                indication = ripple(
-                    bounded = true,
-                    radius = Int.MAX_VALUE.dp,
-                    color = contentColor
+        modifier =
+            modifier
+                .semantics { role = Role.Button }
+                .defaultMinSize(
+                    minWidth = SimpleButtonDefaults.MinWidth,
+                    minHeight = SimpleButtonDefaults.MinHeight,
+                ).minimumInteractiveComponentSize()
+                .surface(
+                    shape = shape,
+                    backgroundColor = containerColor,
+                    border = border,
+                    shadowElevation = with(LocalDensity.current) { elevation.toPx() },
+                ).clickable(
+                    enabled = enabled,
+                    onClick = onClick,
+                    role = Role.Button,
+                    indication =
+                        ripple(
+                            bounded = true,
+                            radius = Int.MAX_VALUE.dp,
+                            color = contentColor,
+                        ),
+                    interactionSource = interactionSource,
                 ),
-                interactionSource = interactionSource
-            ),
-        propagateMinConstraints = true
+        propagateMinConstraints = true,
     ) {
         val mergedStyle =
             LocalTextStyle.current.merge(MaterialTheme.typography.labelLarge)
@@ -113,7 +112,7 @@ fun SimpleButton(
                 Modifier.align(Alignment.Center).padding(contentPadding),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
-                content = content
+                content = content,
             )
         }
     }
@@ -125,21 +124,20 @@ private fun Modifier.surface(
     backgroundColor: Color,
     border: BorderStroke?,
     shadowElevation: Float,
-) =
-    this.then(
+) = this
+    .then(
         if (shadowElevation > 0f) {
             Modifier.graphicsLayer(
                 shadowElevation = shadowElevation,
                 shape = shape,
-                clip = false
+                clip = false,
             )
         } else {
             Modifier
-        }
-    )
-        .then(if (border != null) Modifier.border(border, shape) else Modifier)
-        .background(color = backgroundColor, shape = shape)
-        .clip(shape)
+        },
+    ).then(if (border != null) Modifier.border(border, shape) else Modifier)
+    .background(color = backgroundColor, shape = shape)
+    .clip(shape)
 
 @Preview
 @Composable
