@@ -1,0 +1,153 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  dev-workflow:
+    runs-on: ubuntu-latest
+    env:
+      JVM_OPTS: -Xmx3200m
+      GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # Or your preferred distribution
+          java-version: '17'     # Or your project's Java version
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties', '**/*.gradle.kts', '**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Download dependencies
+        run: ./gradlew dependencies
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Build all targets
+        run: ./gradlew build
+
+      - name: Run Kotlin linting
+        run: ./gradlew ktlintCheck
+
+      - name: Run Android lint
+        run: ./gradlew lintDebug
+
+      - name: Upload Test Results
+        if: always() # Always run even if previous steps fail, to upload partial results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: build/test-results/
+
+      - name: Upload Build Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: build/reports/
+          retention-days: 7
+
+      - name: Upload Ktlint Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ktlint-reports
+          path: build/reports/ktlint/
+          retention-days: 7
+
+      - name: Upload Android Lint Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-lint-report
+          path: build/reports/lint-results-debug.html
+          retention-days: 7
+
+  main-workflow:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      JVM_OPTS: -Xmx3200m
+      GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties', '**/*.gradle.kts', '**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Download dependencies # Added this step as it was in setup_gradle
+        run: ./gradlew dependencies
+
+      - name: Build all targets
+        run: ./gradlew build
+
+      - name: Run Kotlin linting
+        run: ./gradlew ktlintCheck
+
+      - name: Run Android lint
+        run: ./gradlew lintDebug
+
+      - name: Upload Build Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: build/reports/
+          retention-days: 7
+
+      - name: Upload Ktlint Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ktlint-reports
+          path: build/reports/ktlint/
+          retention-days: 7
+
+      - name: Upload Android Lint Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-lint-report
+          path: build/reports/lint-results-debug.html
+          retention-days: 7
