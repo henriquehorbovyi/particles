@@ -1,7 +1,7 @@
 <h1 align="center">Compose Particles</h1>
 
 <p align="center">
-<a href="https://github.com/henriquehorbovyi/particles/actions/workflows/workflows.yml"><img src="https://github.com/henriquehorbovyi/particles/actions/workflows/workflows.yml/badge.svg" alt="Build status"></a>
+<a href="https://github.com/henriquehorbovyi/particles/actions/workflows/pipeline.yml"><img src="https://github.com/henriquehorbovyi/particles/actions/workflows/pipeline.yml/badge.svg" alt="Build status"></a>
 <a href="https://search.maven.org/artifact/io.github.henriquehorbovyi/particles"><img src="https://img.shields.io/maven-central/v/io.github.henriquehorbovyi/particles.svg?label=Maven%20Central" alt="Maven Central"></a>
 
 Compose Particles is a set of foundational and most used components for building Compose Multiplatform apps.
