@@ -8,6 +8,7 @@ on:
 
 jobs:
   dev-workflow:
+    if: github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       JVM_OPTS: -Xmx3200m
