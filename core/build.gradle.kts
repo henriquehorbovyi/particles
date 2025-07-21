@@ -55,6 +55,8 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.material3)
+            implementation(compose.components.resources)
+            implementation("org.jetbrains.compose.material:material-icons-core:1.6.11")
         }
 
         commonTest.dependencies {

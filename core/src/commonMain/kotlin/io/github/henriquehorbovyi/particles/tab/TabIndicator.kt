@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.tab
+package io.github.henriquehorbovyi.particles.tab
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

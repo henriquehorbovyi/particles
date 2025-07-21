@@ -1,4 +1,4 @@
-package io.henriquehorbovyi.particles.tab
+package io.github.henriquehorbovyi.particles.tab
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
