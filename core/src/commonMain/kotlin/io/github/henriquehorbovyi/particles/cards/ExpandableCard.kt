@@ -35,7 +35,7 @@ fun ExpandableCard(
     title: String,
     content: @Composable () -> Unit,
     modifier: Modifier = Modifier,
-    initiallyExpanded: Boolean = false
+    initiallyExpanded: Boolean = false,
 ) {
     var isExpanded by remember { mutableStateOf(initiallyExpanded) }
     val rotationAngle by animateFloatAsState(
@@ -67,10 +67,10 @@ fun ExpandableCard(
                 )
 
                 Icon(
-                     imageVector = Icons.Default.KeyboardArrowDown,
-                     contentDescription = if (isExpanded) "Collapse" else "Expand",
-                     modifier = Modifier.rotate(rotationAngle)
-                 )
+                    imageVector = Icons.Default.KeyboardArrowDown,
+                    contentDescription = if (isExpanded) "Collapse" else "Expand",
+                    modifier = Modifier.rotate(rotationAngle)
+                )
             }
 
             // Content

@@ -19,8 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -33,7 +31,7 @@ object SearchBarDefaults {
     val DefaultShape: Shape @Composable get() = RoundedCornerShape(6.dp)
 
     /** Default debounce time in milliseconds. */
-    const val DefaultDebounceTime: Long = 300L
+    const val DEFAULT_DEBOUNCE_TIME: Long = 300L
 
     /**
      * Creates a [TextFieldColors] that represents the default colors used in
@@ -85,51 +83,52 @@ object SearchBarDefaults {
         unfocusedPlaceholderColor: Color = Color.Unspecified,
         disabledPlaceholderColor: Color = Color.Unspecified,
         errorPlaceholderColor: Color = Color.Unspecified
-    ): TextFieldColors = TextFieldDefaults.colors(
-        focusedTextColor = textColor,
-        unfocusedTextColor = textColor,
-        disabledTextColor = disabledTextColor,
-        errorTextColor = textColor,
-        focusedContainerColor = containerColor,
-        unfocusedContainerColor = containerColor,
-        disabledContainerColor = containerColor,
-        errorContainerColor = containerColor,
-        cursorColor = cursorColor,
-        errorCursorColor = errorCursorColor,
-        selectionColors = androidx.compose.foundation.text.selection.LocalTextSelectionColors.current,
-        focusedIndicatorColor = focusedIndicatorColor,
-        unfocusedIndicatorColor = unfocusedIndicatorColor,
-        disabledIndicatorColor = disabledIndicatorColor,
-        errorIndicatorColor = errorIndicatorColor,
-        focusedLeadingIconColor = focusedLeadingIconColor,
-        unfocusedLeadingIconColor = unfocusedLeadingIconColor,
-        disabledLeadingIconColor = disabledLeadingIconColor,
-        errorLeadingIconColor = errorLeadingIconColor,
-        focusedTrailingIconColor = focusedTrailingIconColor,
-        unfocusedTrailingIconColor = unfocusedTrailingIconColor,
-        disabledTrailingIconColor = disabledTrailingIconColor,
-        errorTrailingIconColor = errorTrailingIconColor,
-        focusedPlaceholderColor = focusedPlaceholderColor,
-        unfocusedPlaceholderColor = unfocusedPlaceholderColor,
-        disabledPlaceholderColor = disabledPlaceholderColor,
-        errorPlaceholderColor = errorPlaceholderColor,
-        focusedLabelColor = Color.Unspecified, // Labels not typically used in SearchBar
-        unfocusedLabelColor = Color.Unspecified,
-        disabledLabelColor = Color.Unspecified,
-        errorLabelColor = Color.Unspecified,
-        focusedSupportingTextColor = Color.Unspecified, // Supporting text not typically used
-        unfocusedSupportingTextColor = Color.Unspecified,
-        disabledSupportingTextColor = Color.Unspecified,
-        errorSupportingTextColor = Color.Unspecified,
-        focusedPrefixColor = Color.Unspecified,
-        unfocusedPrefixColor = Color.Unspecified,
-        disabledPrefixColor = Color.Unspecified,
-        errorPrefixColor = Color.Unspecified,
-        focusedSuffixColor = Color.Unspecified,
-        unfocusedSuffixColor = Color.Unspecified,
-        disabledSuffixColor = Color.Unspecified,
-        errorSuffixColor = Color.Unspecified
-    )
+    ): TextFieldColors =
+        TextFieldDefaults.colors(
+            focusedTextColor = textColor,
+            unfocusedTextColor = textColor,
+            disabledTextColor = disabledTextColor,
+            errorTextColor = textColor,
+            focusedContainerColor = containerColor,
+            unfocusedContainerColor = containerColor,
+            disabledContainerColor = containerColor,
+            errorContainerColor = containerColor,
+            cursorColor = cursorColor,
+            errorCursorColor = errorCursorColor,
+            selectionColors = androidx.compose.foundation.text.selection.LocalTextSelectionColors.current,
+            focusedIndicatorColor = focusedIndicatorColor,
+            unfocusedIndicatorColor = unfocusedIndicatorColor,
+            disabledIndicatorColor = disabledIndicatorColor,
+            errorIndicatorColor = errorIndicatorColor,
+            focusedLeadingIconColor = focusedLeadingIconColor,
+            unfocusedLeadingIconColor = unfocusedLeadingIconColor,
+            disabledLeadingIconColor = disabledLeadingIconColor,
+            errorLeadingIconColor = errorLeadingIconColor,
+            focusedTrailingIconColor = focusedTrailingIconColor,
+            unfocusedTrailingIconColor = unfocusedTrailingIconColor,
+            disabledTrailingIconColor = disabledTrailingIconColor,
+            errorTrailingIconColor = errorTrailingIconColor,
+            focusedPlaceholderColor = focusedPlaceholderColor,
+            unfocusedPlaceholderColor = unfocusedPlaceholderColor,
+            disabledPlaceholderColor = disabledPlaceholderColor,
+            errorPlaceholderColor = errorPlaceholderColor,
+            focusedLabelColor = Color.Unspecified, // Labels not typically used in SearchBar
+            unfocusedLabelColor = Color.Unspecified,
+            disabledLabelColor = Color.Unspecified,
+            errorLabelColor = Color.Unspecified,
+            focusedSupportingTextColor = Color.Unspecified, // Supporting text not typically used
+            unfocusedSupportingTextColor = Color.Unspecified,
+            disabledSupportingTextColor = Color.Unspecified,
+            errorSupportingTextColor = Color.Unspecified,
+            focusedPrefixColor = Color.Unspecified,
+            unfocusedPrefixColor = Color.Unspecified,
+            disabledPrefixColor = Color.Unspecified,
+            errorPrefixColor = Color.Unspecified,
+            focusedSuffixColor = Color.Unspecified,
+            unfocusedSuffixColor = Color.Unspecified,
+            disabledSuffixColor = Color.Unspecified,
+            errorSuffixColor = Color.Unspecified
+        )
 }
 
 @Composable
@@ -139,7 +138,7 @@ fun SearchBar(
     onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: @Composable (() -> Unit) = { Text("Search") },
-    debounceTime: Long = SearchBarDefaults.DefaultDebounceTime,
+    debounceTime: Long = SearchBarDefaults.DEFAULT_DEBOUNCE_TIME,
     shape: Shape = SearchBarDefaults.DefaultShape,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,

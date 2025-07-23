@@ -1,7 +1,6 @@
 package io.github.henriquehorbovyi.particles
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -14,13 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
-import kotlin.math.max
 
 /**
  * Represents an item in the timeline.
@@ -37,7 +34,7 @@ data class TimelineItem(
     val description: (@Composable () -> Unit)? = null,
     val circleColor: Color = Color.Gray,
     val lineColor: Color = Color.Gray,
-    val lineStyle: Stroke = Stroke(width = 2f) // Default stroke width 2f
+    val lineStyle: Stroke = Stroke(width = 2f)
 )
 
 /**
@@ -59,7 +56,7 @@ fun Timeline(
     circleRadius: Dp = 6.dp,
     lineWidth: Dp = 2.dp,
     contentPadding: Dp = 8.dp,
-    circleCenterYFromTop: Dp = 16.dp // Default position for circle center
+    circleCenterYFromTop: Dp = 16.dp
 ) {
     Column(
         modifier = modifier,
@@ -94,10 +91,11 @@ internal fun TimelineItemComponent(
     val actualCircleCenterYPx = with(density) { circleCenterYFromTop.toPx() }
 
     Row(modifier = Modifier.height(IntrinsicSize.Min)) {
+        // Ensure canvas is wide enough for circle or line
         Canvas(
             modifier = Modifier
                 .fillMaxHeight()
-                .width(max(lineWidth, circleRadius * 2)) // Ensure canvas is wide enough for circle or line
+                .width(max(lineWidth, circleRadius * 2))
         ) {
             val canvasCenterX = size.width / 2f
 
@@ -131,7 +129,8 @@ internal fun TimelineItemComponent(
 
         Spacer(modifier = Modifier.width(contentPadding))
 
-        Column(modifier = Modifier.padding(vertical = contentPadding / 2)) { // Add some vertical padding to content
+        // Add some vertical padding to content
+        Column(modifier = Modifier.padding(vertical = contentPadding / 2)) {
             item.title()
             item.description?.invoke()
         }

@@ -136,7 +136,7 @@ val particles: List<ParticleComponent> =
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Search,
-                            contentDescription = "Search Icon"
+                            contentDescription = "Search Icon",
                         )
                     },
                     trailingIcon = {
@@ -145,12 +145,12 @@ val particles: List<ParticleComponent> =
                         }) {
                             Icon(
                                 Icons.Default.Clear,
-                                contentDescription = "Clear"
+                                contentDescription = "Clear",
                             )
                         }
-                    }
+                    },
                 )
-            }
+            },
         ),
         ParticleComponent(
             name = "OTP Input",
@@ -165,7 +165,7 @@ val particles: List<ParticleComponent> =
                 )
                 Spacer(modifier = Modifier.height(32.dp))
                 Text(message)
-            }
+            },
         ),
         ParticleComponent(
             name = "Rating Stars",
@@ -179,14 +179,14 @@ val particles: List<ParticleComponent> =
                     rating = rating,
                     iconSize = starSize.dp,
                     allowHalfStars = isHalfEnabled,
-                    onRatingChange = { rating = it }
+                    onRatingChange = { rating = it },
                 )
 
                 Spacer(modifier = Modifier.height(64.dp))
 
                 SimpleButton(
                     content = { Text("${if (isHalfEnabled) "Disable" else "Enable"} half start") },
-                    onClick = { isHalfEnabled = !isHalfEnabled }
+                    onClick = { isHalfEnabled = !isHalfEnabled },
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -199,7 +199,7 @@ val particles: List<ParticleComponent> =
                     valueRange = 24f..56f,
                     steps = 10,
                 )
-            }
+            },
         ),
         ParticleComponent(
             name = "Stepper",
@@ -207,14 +207,13 @@ val particles: List<ParticleComponent> =
                 val steps = listOf(
                     StepperItem("Step 1", isCompleted = true),
                     StepperItem("Step 2", isActive = true),
-                    StepperItem("Step 3")
+                    StepperItem("Step 3"),
                 )
                 Stepper(
                     modifier = Modifier.padding(horizontal = 32.dp),
-                    steps = steps
+                    steps = steps,
                 )
-
-            }
+            },
         ),
         ParticleComponent(
             name = "Expandable Card",
@@ -223,14 +222,13 @@ val particles: List<ParticleComponent> =
                     title = "Expandable Card",
                     content = {
                         Text(
-                            text = "This is the content of the expandable card. " +
-                                    "You can put any composable here, like text, images, etc."
+                            text = "This is the content of the expandable card. You can put any composable here, like text, images, etc."
                         )
                     },
                     initiallyExpanded = false,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.padding(16.dp),
                 )
-            }
+            },
         ),
         ParticleComponent(
             name = "FacePile",
@@ -241,10 +239,10 @@ val particles: List<ParticleComponent> =
                         "Orange",
                         "Banana",
                         "Pineapple",
-                        "Grape"
+                        "Grape",
                     ),
                 )
-            }
+            },
         ),
         ParticleComponent(
             name = "Timeline",
@@ -256,7 +254,6 @@ val particles: List<ParticleComponent> =
                             title = { Text("Event 1") },
                             description = { Text("Description for Event 1") },
                         ),
-
                         TimelineItem(
                             title = { Text("Event 2") },
                             description = { Text("Description for Event 2") },
@@ -268,5 +265,5 @@ val particles: List<ParticleComponent> =
                     ),
                 )
             }
-        )
+        ),
     )

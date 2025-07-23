@@ -52,7 +52,8 @@ fun OTPInput(
                     value = currentChar,
                     onValueChange = { newValue ->
                         if (newValue.length <= 1 && newValue.all { it.isDigit() }) {
-                            val candidateOtp = otpValue.take(index) + newValue + otpValue.drop(index + 1)
+                            val candidateOtp =
+                                otpValue.take(index) + newValue + otpValue.drop(index + 1)
                             otpValue = candidateOtp.take(otpLength)
 
                             if (newValue.isNotEmpty()) {
@@ -84,10 +85,11 @@ fun OTPInput(
                     shape = shape,
                     modifier = Modifier
                         .sizeIn(
-                            minHeight = 42.dp, minWidth = 42.dp,
-                            maxHeight = 56.dp, maxWidth = 56.dp
-                        )
-                        .focusRequester(focusRequesters[index])
+                            minHeight = 42.dp,
+                            minWidth = 42.dp,
+                            maxHeight = 56.dp,
+                            maxWidth = 56.dp,
+                        ).focusRequester(focusRequesters[index])
                 )
             }
         }

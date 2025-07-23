@@ -56,7 +56,7 @@ fun Stepper(
                             text = "✓",
                             color = Color.White,
                             fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
                         )
                     } else {
                         Text(
@@ -75,9 +75,10 @@ fun Stepper(
                             .height(2.dp)
                             .weight(1f)
                             .background(
-                                if (steps[index + 1].isCompleted || step.isCompleted) Color(
-                                    0xFF4CAF50
-                                ) else Color.Gray
+                                if (steps[index + 1].isCompleted || step.isCompleted)
+                                    Color(0xFF4CAF50)
+                                else
+                                    Color.Gray
                             )
                     )
                 }
@@ -94,7 +95,6 @@ fun Stepper(
                     fontSize = 12.sp,
                     color = Color.Gray,
                     textAlign = TextAlign.Center,
-
                 )
             }
         }

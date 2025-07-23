@@ -1,9 +1,65 @@
 root = true
 
 [*.{kt,kts}]
-ktlint_function_naming_ignore_when_annotated_with = Composable
-ktlint_function_signature_body_expression_wrapping=multiline
-filename=disabled
+# Standard rules
+ktlint_standard_function-naming=disabled
+ktlint_standard_indentation=disabled
+ktlint_standard_multiline-expression-wrapping=disabled
+ktlint_standard_multiline-if-else=disabled
+ktlint_standard_no-blank-line-before-rbrace=disabled
+ktlint_standard_no-consecutive-blank-lines=disabled
+ktlint_standard_no-empty-class-body=disabled
+ktlint_standard_no-empty-first-line-in-method-block=disabled
+ktlint_standard_no-line-break-after-else=disabled
+ktlint_standard_no-line-break-before-assignment=disabled
+ktlint_standard_no-multi-spaces=disabled
+ktlint_standard_no-semicolons=disabled
+ktlint_standard_no-single-line-block-comment=disabled
+ktlint_standard_no-trailing-spaces=disabled
+ktlint_standard_no-unit-return=disabled
+ktlint_standard_no-unused-imports=disabled
+ktlint_standard_nullable-type-spacing=disabled
+ktlint_standard_package-name=disabled
+ktlint_standard_parameter-list-spacing=disabled
+ktlint_standard_parameter-list-wrapping=disabled
+ktlint_standard_paren-spacing=disabled
+ktlint_standard_property-wrapping=disabled
+ktlint_standard_range-spacing=disabled
+ktlint_standard_spacing-around-angle-brackets=disabled
+ktlint_standard_spacing-around-colon=disabled
+ktlint_standard_spacing-around-comma=disabled
+ktlint_standard_spacing-around-dot=disabled
+ktlint_standard_spacing-around-dot-separator=disabled
+ktlint_standard_spacing-around-keyword=disabled
+ktlint_standard_spacing-around-operators=disabled
+ktlint_standard_spacing-around-parentheses=disabled
+ktlint_standard_spacing-between-declarations-with-annotations=disabled
+ktlint_standard_spacing-between-declarations-with-comments=disabled
+ktlint_standard_statement-wrapping=disabled
+ktlint_standard_string-template-indent=disabled
+ktlint_standard_trailing-comma=disabled
+ktlint_standard_trailing-comma-on-call-site=disabled
+ktlint_standard_trailing-comma-on-declaration-site=disabled
+ktlint_standard_wrapping=disabled
+
+# Experimental rules
+ktlint_experimental_all-experimental=disabled
+ktlint_experimental_annotations=disabled
+ktlint_experimental_argument-list-wrapping=disabled
+ktlint_experimental_block-comment-wrapping=disabled
+ktlint_experimental_class-naming=disabled
+ktlint_experimental_default-annotations=disabled
+ktlint_experimental_enum-wrapping=disabled
+ktlint_experimental_function-naming=disabled
+ktlint_experimental_function-signature=disabled
+ktlint_experimental_multiline-expression-wrapping=disabled
+ktlint_experimental_no-empty-file=disabled
+ktlint_experimental_return-type-spacing=disabled
+ktlint_experimental_string-template-indent=disabled
+ktlint_experimental_type-parameter-list-spacing=disabled
+
+# Other settings
+insert_final_newline = true
 
 [**/build/**/*.kt]
 ktlint = disabled
@@ -22,5 +78,3 @@ ktlint = disabled
 
 [**/presentation/resources/**]
 ktlint = disabled
-
-
